@@ -19,29 +19,29 @@ void mostrarA(int *a, int tam)
 void quicksort(int *&a,int inicio,int final)
 {
     int medio, i, j, piv;
-    medio = (inicio+final)/2;
-    piv = a[medio];
-    i = inicio;
-    j = final;
+    medio = (inicio+final)/2;//Indice del pivote
+    piv = a[medio];//Se guarda el valor del pivote
+    i = inicio;//Iterador de la izquierda
+    j = final;//Iterador de la derecha
     do{
-        while(a[i]<piv)
+        while(a[i]<piv)//Busca por la izquierda, se detiene si el valor señalado es mayor al pivote
             i++;
-        while(a[j]>piv)
+        while(a[j]>piv)//Busca por la derecha,  se detiene si el valor señalado es menor al pivote
             j--;
-        if(i<=j)
+        if(i<=j)//Si el primer iterador no paso al segundo
         {
             int aux;
             aux = a[i];
             a[i] = a[j];
-            a[j] = aux;
+            a[j] = aux;//Intercambia los valores señalados por los iteradores
             i++;
             j--;
         }    
-    }while(i<=j);
+    }while(i<=j);//Repite la busqueda si el primer iterados no sobrepaso al segundo
     if(inicio<j)
-        quicksort(a,inicio,j);
+        quicksort(a,inicio,j);//Inicializa por el segmento izquierdo
     if(i<final)
-        quicksort(a,i,final);
+        quicksort(a,i,final);//Inicializa por el segmento derecho
 }
 int main()
 {
